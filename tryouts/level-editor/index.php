@@ -74,6 +74,21 @@
         ?>
     </table>
 
+    <form>
+        Load level:
+        <select name="load">
+            <option value="0">-- please choose --</option>
+            <?php
+                $levels = glob('levels/*.json');
+                foreach($levels as $level) {
+                    printf('<option>%s</option>', str_replace('levels/', '', $level));
+                }
+            ?>
+        </select>
+        Name:
+        <input type="text" name="name" />
+    </form>
+
     Output:
     <button id="save">Output JSON</button>
 
@@ -119,7 +134,37 @@
                     };
                     json.tiles.push(tile);
                 });
-                console.log(json);
+                $.ajax({
+                    url : 'save.php',
+                    type : 'POST',
+                    data: {
+                        name: $('input[name="name"]').val(),
+                        json: JSON.stringify(json)
+                    },
+                    success: function(data) {
+                        if(data == '-1') {
+                            alert('Error');
+                        } else {
+                            alert('OK!');
+                        }
+                    }
+                });
+            });
+
+            // JSON Loading:
+            $('select[name="load"]').change(function(){
+                if(this.value != 0) {
+                    $.ajax({
+                        url : 'levels/' + this.value,
+                        dataType : 'json',
+                        success : function(data) {
+                            $(data.tiles).each(function(){
+                                var tile = $('#tiles span[data-tile="'+this.tile+'"]');
+                                $('#map td[data-x="'+this.x+'"][data-y="'+this.y+'"]').html(tile.clone());
+                            });
+                        }
+                    });
+                }
             });
         });
 	</script>
