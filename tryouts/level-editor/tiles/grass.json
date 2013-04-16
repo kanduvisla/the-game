@@ -1,0 +1,24 @@
+[{
+	"collection" : "grass",
+	"map" : "tiles-1.png",
+	"tiles" : [
+		{
+			"type" : "plain",
+			"x" : 0,
+			"y" : 0,
+			"walkable" : "yes"
+		},
+		{
+			"type" : "flower",
+			"x" : 1,
+			"y" : 0,
+			"walkable" : "yes"
+		},
+		{
+			"type" : "rock",
+			"x" : 2,
+			"y" : 0,
+			"walkable" : "yes"
+		}
+	]
+}]
