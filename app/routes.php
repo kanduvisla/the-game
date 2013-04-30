@@ -39,3 +39,11 @@ Route::get('logout', function(){
     Auth::logout();
     return Redirect::to('login');
 });
+
+Route::get('sprites', function(){
+    return View::make('sprites');
+});
+
+Route::post('sprites', function(){
+
+});

@@ -1,0 +1,22 @@
+html {
+    background: #000;
+    color: #fff;
+}
+#colors, #sprite {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+#colors td, #sprite td {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #333;
+}
+span.tile {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+#colors td.active {
+    outline: 1px solid #fff;
+}
