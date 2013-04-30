@@ -13,5 +13,29 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('index');
+});
+
+Route::get('login', function(){
+    return View::make('login');
+});
+
+Route::post('login', function(){
+    $userdata = array(
+        'username' => Input::get('username'),
+        'password' => Input::get('password')
+    );
+
+    if(Auth::attempt($userdata))
+    {
+        return Redirect::to('/');
+    } else {
+        return Redirect::to('login')
+            ->with('login_errors', true);
+    }
+});
+
+Route::get('logout', function(){
+    Auth::logout();
+    return Redirect::to('login');
 });
