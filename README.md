@@ -1,4 +1,4 @@
-the-game
+The Game
 ========
 
 An Open-Source, Community-Driven Game
